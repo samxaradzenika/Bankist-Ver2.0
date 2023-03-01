@@ -130,3 +130,17 @@ document.querySelector(`.nav__links`).addEventListener(`click`, function (e) {
 document.querySelector(`.nav`).addEventListener(`click`, function (e) {
   this.style.backgroundColor = randomColor();
 });
+
+const h1 = document.querySelector(`h1`);
+
+console.log(h1.querySelectorAll(`.higj;ight`));
+console.log(h1.childNodes);
+console.log(h1.children);
+
+h1.firstElementChild.style.color = `white`;
+h1.lastElementChild.style.color = `orange`;
+
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+h1.closest(`.header`).style.background = `var(--gradient-secondary)`;
