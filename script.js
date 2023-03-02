@@ -47,100 +47,119 @@ btnScrollTo.addEventListener(`click`, function (e) {
   section1.scrollIntoView({ behavior: `smooth` });
 });
 
+const tabs = document.querySelectorAll(`.operations__tab`);
+const tabsContainer = document.querySelector(`.operations__tab-container`);
+const tabsContent = document.querySelectorAll(`.operations__content`);
+
+tabsContainer.addEventListener(`click`, function (e) {
+  const clicked = e.target.closest(`.operations__tab`);
+
+
+  if (!clicked) return;
+  tabs.forEach(t => t.classList.remove(`operations__tab--active`));
+  clicked.classList.add(`operations__tab--active`);
+
+  tabsContent.forEach(c => c.classList.remove(`operations__content--active`));
+
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add(`operations__content--active`);
+});
+
 ///////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////
 //////////////  PRACTICING ///////////////////////////////////////////
-const header = document.querySelector(`.header`);
-const allSections = document.querySelectorAll(`.section`); //node list
-console.log(allSections);
-document.getElementById(`section--1 `);
-const allButtons = document.getElementsByTagName(`button`); // live list of tags
-console.log(allButtons);
-console.log(document.getElementsByClassName(`btn`)); //also live list
-const message = document.createElement(`div`);
-message.classList.add(`cookie-message`);
-// message.textContent=`we use cookies for improved functionality and analytics.`;
-message.innerHTML = `we use cookies for improved functionality and analytics.<button class="btn btn--close-cookie">Got it!</button>`;
-// header.prepend(message);
-header.append(message);
-// header.append(message.cloneNode(true));
-document
-  .querySelector(`.btn--close-cookie`)
-  .addEventListener(`click`, function () {
-    message.remove();
-  });
-message.style.backgroundColor = `#37383d`;
-message.style.width = `120%`;
+// const header = document.querySelector(`.header`);
+// const allSections = document.querySelectorAll(`.section`); //node list
+// console.log(allSections);
+// document.getElementById(`section--1 `);
+// const allButtons = document.getElementsByTagName(`button`); // live list of tags
+// console.log(allButtons);
+// console.log(document.getElementsByClassName(`btn`)); //also live list
+// const message = document.createElement(`div`);
+// message.classList.add(`cookie-message`);
+// // message.textContent=`we use cookies for improved functionality and analytics.`;
+// message.innerHTML = `we use cookies for improved functionality and analytics.<button class="btn btn--close-cookie">Got it!</button>`;
+// // header.prepend(message);
+// header.append(message);
+// // header.append(message.cloneNode(true));
+// document
+//   .querySelector(`.btn--close-cookie`)
+//   .addEventListener(`click`, function () {
+//     message.remove();
+//   });
+// message.style.backgroundColor = `#37383d`;
+// message.style.width = `120%`;
 
-console.log(message.style.color);
-console.log(message.style.backgroundColor);
+// console.log(message.style.color);
+// console.log(message.style.backgroundColor);
 
-console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).height);
+// console.log(getComputedStyle(message).color);
+// console.log(getComputedStyle(message).height);
 
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + `px`;
-document.documentElement.style.setProperty(`--color-primary`, `orangered`);
+// message.style.height =
+//   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + `px`;
+// document.documentElement.style.setProperty(`--color-primary`, `orangered`);
 
-//Attributes
+// //Attributes
 
-const logo = document.querySelector(`.nav__logo`);
-console.log(logo.alt);
-console.log(logo.src);
-console.log(logo.className);
+// const logo = document.querySelector(`.nav__logo`);
+// console.log(logo.alt);
+// console.log(logo.src);
+// console.log(logo.className);
 
-logo.alt = `Beautiful minimalist logo`;
+// logo.alt = `Beautiful minimalist logo`;
 
-//NON standart
+// //NON standart
 
-console.log(logo.designer);
-console.log(logo.getAttribute(`designer`));
+// console.log(logo.designer);
+// console.log(logo.getAttribute(`designer`));
 
-console.log(logo.setAttribute(`company`, `Bankist`));
+// console.log(logo.setAttribute(`company`, `Bankist`));
 
-console.log(logo.getAttribute(`src`));
+// console.log(logo.getAttribute(`src`));
 
-const link = document.querySelector(`.twitter-link`);
+// const link = document.querySelector(`.twitter-link`);
 
-console.log(link.href);
-console.log(link.getAttribute(`href`));
-console.log(logo.dataset.versionNumber);
+// console.log(link.href);
+// console.log(link.getAttribute(`href`));
+// console.log(logo.dataset.versionNumber);
 
-const h1 = document.querySelector(`h1`);
-const alertH1 = function (e) {
-  alert(`header!!!!`);
-  // h1.removeEventListener(`mouseenter`, alertH1);
-};
-h1.addEventListener(`mouseenter`, alertH1);
-setTimeout(() => h1.removeEventListener(`mouseenter`, alertH1), 3000);
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
+// const h1 = document.querySelector(`h1`);
+// const alertH1 = function (e) {
+//   alert(`header!!!!`);
+//   // h1.removeEventListener(`mouseenter`, alertH1);
+// };
+// h1.addEventListener(`mouseenter`, alertH1);
+// setTimeout(() => h1.removeEventListener(`mouseenter`, alertH1), 3000);
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
 
-const randomColor = () =>
-  `rgb(${randomInt(0, 225)},${randomInt(0, 225)},${randomInt(0, 225)})`;
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 225)},${randomInt(0, 225)},${randomInt(0, 225)})`;
 
-document.querySelector(`.nav__link`).addEventListener(`click`, function (e) {
-  this.style.backgroundColor = randomColor();
-  // e.stopImmediatePropagation();
-});
-document.querySelector(`.nav__links`).addEventListener(`click`, function (e) {
-  this.style.backgroundColor = randomColor();
-});
-document.querySelector(`.nav`).addEventListener(`click`, function (e) {
-  this.style.backgroundColor = randomColor();
-});
+// document.querySelector(`.nav__link`).addEventListener(`click`, function (e) {
+//   this.style.backgroundColor = randomColor();
+//   // e.stopImmediatePropagation();
+// });
+// document.querySelector(`.nav__links`).addEventListener(`click`, function (e) {
+//   this.style.backgroundColor = randomColor();
+// });
+// document.querySelector(`.nav`).addEventListener(`click`, function (e) {
+//   this.style.backgroundColor = randomColor();
+// });
 
-const h1 = document.querySelector(`h1`);
+// const h1 = document.querySelector(`h1`);
 
-console.log(h1.querySelectorAll(`.higj;ight`));
-console.log(h1.childNodes);
-console.log(h1.children);
+// console.log(h1.querySelectorAll(`.higj;ight`));
+// console.log(h1.childNodes);
+// console.log(h1.children);
 
-h1.firstElementChild.style.color = `white`;
-h1.lastElementChild.style.color = `orange`;
+// h1.firstElementChild.style.color = `white`;
+// h1.lastElementChild.style.color = `orange`;
 
-console.log(h1.parentNode);
-console.log(h1.parentElement);
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
 
-h1.closest(`.header`).style.background = `var(--gradient-secondary)`;
+// h1.closest(`.header`).style.background = `var(--gradient-secondary)`;
